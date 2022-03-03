@@ -11,10 +11,16 @@ const ExpenseForm = () => {
         enteredAmount: '',
         enteredDate: ''
     });
-    const titleChangeHandler = (event) => setUserInput({
-        ...userInput, //spread operation:copy userInput object's attributes.(not copying whole obj just taking attributes and copying them)
-        enteredTitle: event.target.value // then override title
-    });
+    const titleChangeHandler = (event) => {
+        // setUserInput({
+        //     ...userInput,
+        //     enteredTitle: event.target.value
+        // }); this sometimes not working properly, state might be outdated.
+        setUserInput((previousStateSnapShot) => {
+            return {...previousStateSnapShot, enteredTitle: event.target.value}
+            //this approach, react gurantee that (previousStateSnapShot) will always the latest state snapshot
+        });
+    }
 
     const amountChangeHandler = (event) => setUserInput({
         ...userInput,
