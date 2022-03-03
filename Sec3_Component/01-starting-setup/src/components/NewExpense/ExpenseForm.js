@@ -2,15 +2,31 @@ import React, {useState} from "react";
 import "./ExpenseForm.css";
 
 const ExpenseForm = () => {
-    const [enteredTitle, setEnteredTitle] = useState('');
-    const titleChangeHandler = (event) => setEnteredTitle(event.target.value);
+    // const [enteredTitle, setEnteredTitle] = useState('');
+    // const [enteredAmount, setEnteredAmount] = useState('');
+    // const [enteredDate, setEnteredDate] = useState('');
+    // write ^ 3 lines into 1 line
+    const [userInput, setUserInput] = useState({
+        enteredTitle: '',
+        enteredAmount: '',
+        enteredDate: ''
+    });
+    const titleChangeHandler = (event) => setUserInput({
+        ...userInput, //spread operation:copy userInput object's attributes.(not copying whole obj just taking attributes and copying them)
+        enteredTitle: event.target.value // then override title
+    });
 
-    const [enteredAmount, setEnteredAmount] = useState('');
-    const amountChangeHandler = (event) => setEnteredAmount(event.target.value);
+    const amountChangeHandler = (event) => setUserInput({
+        ...userInput,
+        enteredAmount: event.target.value
+    });
 
-    const [enteredDate, setEnteredDate] = useState('');
     const dateChangeHandler = (event) => {
-        setEnteredDate(event.target.value);
+        // setEnteredDate(event.target.value);
+        setUserInput({
+            ...userInput,
+            enteredDate: event.target.value
+        });
     };
     
   return <form>
