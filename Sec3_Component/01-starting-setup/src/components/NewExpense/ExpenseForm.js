@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ExpenseForm.css";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
@@ -34,7 +34,7 @@ const ExpenseForm = () => {
           amount: enteredAmount,
           date: new Date(enteredDate)
       };
-      console.log(expenseData);
+      props.onSaveExpenseData(expenseData);
       // 다시 empty String을 세팅해 줌으로써 새로고침 효과를 줄 수 있다. 다시 인풋박스들을 빈칸으로(처음상태) 만들어준다. 
       setEnteredTitle('')
       setEnteredAmount('')
