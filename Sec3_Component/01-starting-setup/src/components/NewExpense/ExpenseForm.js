@@ -34,11 +34,19 @@ const ExpenseForm = (props) => {
           amount: enteredAmount,
           date: new Date(enteredDate)
       };
+      console.log('in expenseform.js')
+      console.log(expenseData);
+
+      //ExpenseForm 컴포넌트를 사용하는 parent클레스에서 props를 받아서 거기에 저장된 함수onSaveExpenseData를 호출한다. 
+      //이 때 parameter로 위에 expenseData를 넘긴다. expenseData는 업데이트된 값을 가진 expense오브젝트이다.
       props.onSaveExpenseData(expenseData);
+      
       // 다시 empty String을 세팅해 줌으로써 새로고침 효과를 줄 수 있다. 다시 인풋박스들을 빈칸으로(처음상태) 만들어준다. 
       setEnteredTitle('')
       setEnteredAmount('')
       setEnteredDate('')
+      console.log('insied submitHandler() in expenseform.js');
+      console.log(expenseData)
   };
 
   return (

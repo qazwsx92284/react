@@ -25,8 +25,12 @@ const App = () => {
   ];
 
   const addExpenseHandler = expense => {
-    console.log('in app.js')
-    console.log(expense);
+
+    const expenseFromNewExpense = {
+      ...expense
+    }
+    console.log("expense from new expense !!!!")
+    console.log(expenseFromNewExpense)
   }
 
   return (
