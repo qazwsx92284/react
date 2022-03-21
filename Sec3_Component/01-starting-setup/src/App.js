@@ -27,6 +27,7 @@ const DUMMY_EXPENSES = [
 const App = () => {
   const [expenses, setExpenses]= useState(DUMMY_EXPENSES);
 
+  // combine the existing expenses(prevExpeses) and newly entered expense
   const addExpenseHandler = (expense) => {
     // setExpenses([expense, ...expenses])
     //^is not really correct. if update state is depending on previous state, should use function to retrieve the lastest state snapshot
@@ -37,8 +38,10 @@ const App = () => {
 
   return (
     <div>
-      <NewExpense onAddExpense = {addExpenseHandler}/>
-      <Expenses items={expenses}></Expenses>
+      {/* have the form which user can enter new expense and save/deliver the value */}
+      <NewExpense onAddExpense = {addExpenseHandler}/>  
+      {/* display a list of expenses including prevExpenses and newly entered expense */}
+      <Expenses items={expenses}></Expenses> 
     </div>
   );
 }
